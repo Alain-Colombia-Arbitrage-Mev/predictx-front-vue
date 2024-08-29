@@ -13,6 +13,9 @@ import IPhoneSE from "./pages/IPhoneSE.vue";
 import Ipad from "./pages/Ipad.vue";
 import "./global.css";
 
+import store from './store'
+
+
 const routes = [
   {
     path: "/",
@@ -66,6 +69,6 @@ const addMetaTag = (value) => {
 
 const vuetify = createVuetify({ components, directives });
 
-createApp(App).use(router).use(vuetify).mount("#app");
+createApp(App).use(store).use(router).use(vuetify).mount("#app");
 
 export default router;

@@ -52,6 +52,7 @@
             <img class="w-7 h-7 relative overflow-hidden shrink-0" loading="lazy" alt="" src="/facebook-1.svg" />
           </div>
         </div>
+        <router-link to="/forgot">No recuerdo mi contraseña</router-link>
         <v-btn
           class="self-stretch whitespace-nowrap hover:bg-blueviolet-100"
           color="primary"
@@ -68,6 +69,9 @@
 <script>
 import { defineComponent } from "vue";
 import Izquierdo from "../components/Izquierdo.vue";
+import Swal from "sweetalert2";
+import AuthService from "../services/AuthService";
+let service = new AuthService();
 
 export default defineComponent({
   name: "Login",
@@ -78,12 +82,59 @@ export default defineComponent({
       password: ''
     };
   },
-  methods: {
-    handleLogin() {
-      // Manejar el inicio de sesión
-      console.log("Username:", this.username);
-      console.log("Password:", this.password);
-      // Aquí puedes agregar validaciones o llamar a una API
+ methods: {
+    handleLogin: async function() {
+      var t = this,
+        token = null;
+
+      if (this.username != "" && this.password != "") {
+        service
+          .password(this.username, this.password)
+          .then(async function(userToken) {
+            if (userToken.error === "invalid_grant") {
+              throw new Error("Credentials is not valid!");
+            } else if (userToken.data.hasOwnProperty("access_token")) {
+              token = userToken.data;
+              service.login(token);
+              return await service.me();
+            }
+          })
+          .then(function(me) {
+            var meInfo = me.data.data;
+            token.role = meInfo.roles;
+            token.username = meInfo.username;
+            token.name = meInfo.name;
+            token.id = meInfo._id;
+            token.degree = meInfo.rankDegree;
+            token.isActive = meInfo.isActive;
+            // token.account = 
+            if (!meInfo.subscription.status) {
+              Swal.fire(
+              "Suscripcion",
+              "Ups, el periodo de suscripcion terminó. Contacta a soporte",
+              "error"
+              );
+              localStorage.removeItem('login');
+            } else {
+              service.login(token);
+              Swal.fire(
+              "Bienvenido",
+              "Hoy es una nueva oportunidad para invertir",
+              "info"
+              );
+              t.$router.push({ name: "Dashboard" });
+            }
+          })
+          .catch(function(err, r) {
+            Swal.fire("Login error", String(err), "error");
+          });
+      } else {
+        Swal.fire(
+          "Login error",
+          `Error, please enter your credentials`,
+          "error"
+        );
+      }
     }
   }
 });
