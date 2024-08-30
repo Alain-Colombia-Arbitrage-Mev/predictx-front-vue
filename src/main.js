@@ -8,6 +8,7 @@ import * as directives from "vuetify/directives";
 
 import Login from "./pages/Login.vue";
 import Signup from "./pages/Signup.vue";
+import Dashboard from "./pages/Dashboard.vue";
 import IPhone1415ProMax from "./pages/IPhone1415ProMax.vue";
 import IPhone8Plus from "./pages/IPhone8Plus.vue";
 import IPhoneSE from "./pages/IPhoneSE.vue";
@@ -15,7 +16,6 @@ import Ipad from "./pages/Ipad.vue";
 import "./global.css";
 
 import store from './store'
-
 
 const routes = [
   {
@@ -27,6 +27,11 @@ const routes = [
     path: "/signup",
     name: "Signup",
     component: Signup,
+  },
+  {
+    path: "/dashboard",
+    name: "Dashboard",
+    component: Dashboard,
   },
   {
     path: "/iphone-14-15-pro-max-1",
