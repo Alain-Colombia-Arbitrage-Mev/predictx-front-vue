@@ -7,6 +7,7 @@ import * as components from "vuetify/components";
 import * as directives from "vuetify/directives";
 
 import Login from "./pages/Login.vue";
+import Signup from "./pages/Signup.vue";
 import IPhone1415ProMax from "./pages/IPhone1415ProMax.vue";
 import IPhone8Plus from "./pages/IPhone8Plus.vue";
 import IPhoneSE from "./pages/IPhoneSE.vue";
@@ -21,6 +22,11 @@ const routes = [
     path: "/",
     name: "Login",
     component: Login,
+  },
+  {
+    path: "/signup",
+    name: "Signup",
+    component: Signup,
   },
   {
     path: "/iphone-14-15-pro-max-1",

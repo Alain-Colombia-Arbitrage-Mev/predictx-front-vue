@@ -52,7 +52,7 @@
             <img class="w-7 h-7 relative overflow-hidden shrink-0" loading="lazy" alt="" src="/facebook-1.svg" />
           </div>
         </div>
-        <router-link to="/forgot">No recuerdo mi contraseña</router-link>
+        <router-link to="/signup">Signup</router-link>
         <v-btn
           class="self-stretch whitespace-nowrap hover:bg-blueviolet-100"
           color="primary"
