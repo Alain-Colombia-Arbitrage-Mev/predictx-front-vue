@@ -1,4 +1,4 @@
-<template>
+ <template>
   <div class="flex h-screen bg-black text-white">
     <!-- Sidebar -->
     <aside class="w-64 bg-gray-800 p-6 flex flex-col">
@@ -49,9 +49,19 @@
         </div>
       </div>
 
-      <!-- Predictions Table -->
+      <!-- Predictions Table with Filter -->
       <section>
         <h2 class="text-xl font-bold mb-4">Filter predictions</h2>
+        
+        <!-- Symbol Filter -->
+        <div class="mb-4">
+          <label for="symbolFilter" class="block text-sm font-medium text-gray-400 mb-2">Filter by Symbol:</label>
+          <select id="symbolFilter" v-model="selectedSymbol" class="bg-gray-700 text-white rounded-md px-3 py-2 w-full max-w-xs">
+            <option value="">All Symbols</option>
+            <option v-for="symbol in uniqueSymbols" :key="symbol" :value="symbol">{{ symbol }}</option>
+          </select>
+        </div>
+
         <div class="overflow-x-auto">
           <table class="w-full">
             <thead>
@@ -61,13 +71,13 @@
                 <th class="p-3 text-left">Symbol</th>
                 <th class="p-3 text-left">Trend</th>
                 <th class="p-3 text-left">Entry price</th>
-                <th class="p-3 text-left">Predicción</th>
+                <th class="p-3 text-left">Prediction</th>
                 <th class="p-3 text-left">SL</th>
                 <th class="p-3 text-left">TP</th>
               </tr>
             </thead>
             <tbody>
-              <tr v-for="prediction in predictions" :key="prediction.id" class="border-b border-gray-700">
+              <tr v-for="prediction in filteredPredictions" :key="prediction.id" class="border-b border-gray-700">
                 <td class="p-3">{{ prediction.date }}</td>
                 <td class="p-3">{{ prediction.timeFrame }}</td>
                 <td class="p-3">{{ prediction.symbol }}</td>
@@ -86,13 +96,26 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 import { InfinityIcon, RefreshCcwIcon, PackageIcon, TrendingUpIcon, CircleDollarSignIcon, BarChartIcon } from 'lucide-vue-next'
 
 const predictions = ref([
   { id: 1, date: '1', timeFrame: '1D', symbol: 'BTC-USD', trend: 'Long !', entryPrice: '50.0000', prediction: '51.200', sl: '49.500', tp: '62.500' },
   { id: 2, date: '1', timeFrame: '1D', symbol: 'ETH-USD', trend: 'Long !', entryPrice: '2.400', prediction: '2.410', sl: '2.350', tp: '2.610' },
 ])
+
+const selectedSymbol = ref('')
+
+const uniqueSymbols = computed(() => {
+  return [...new Set(predictions.value.map(p => p.symbol))]
+})
+
+const filteredPredictions = computed(() => {
+  if (!selectedSymbol.value) {
+    return predictions.value
+  }
+  return predictions.value.filter(p => p.symbol === selectedSymbol.value)
+})
 </script>
 
 <style>
