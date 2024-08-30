@@ -13,6 +13,7 @@
           </div>
         </div>
         <div class="self-stretch flex flex-col items-start justify-between min-h-[135px]">
+           <p>Please enter your info and join us</p>
            <v-text-field
             class="[border:none] bg-[transparent] self-stretch h-[60.5px] font-inter text-3xl text-gray"
             color="primary"
@@ -75,7 +76,7 @@
         >
           SignUp
         </v-btn>
-        <router-link to="/">Ya tienes cuenta, haz login</router-link>
+        <router-link to="/">Login</router-link>
         
       </form>
     </section>
