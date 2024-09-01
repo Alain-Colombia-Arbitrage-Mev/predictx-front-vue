@@ -1,35 +1,7 @@
  <template>
   <div class="flex h-screen bg-black text-white">
+    <Sidebar> </Sidebar>
     <!-- Sidebar -->
-    <aside class="w-64 bg-gray-800 p-6 flex flex-col">
-      <div class="flex items-center mb-8">
-        <InfinityIcon class="w-8 h-8 mr-2" />
-        <h1 class="text-xl font-bold">PredictX</h1>
-      </div>
-      <p class="text-sm text-gray-400 mb-8">Tool for predict trends & futures preices</p>
-      <nav class="flex-grow">
-        <ul class="space-y-4">
-          <li><a href="#" class="flex items-center"><RefreshCcwIcon class="w-5 h-5 mr-2" /> Crypto</a></li>
-          <li><a href="#" class="flex items-center"><PackageIcon class="w-5 h-5 mr-2" /> Futures</a></li>
-          <li><a href="#" class="flex items-center"><TrendingUpIcon class="w-5 h-5 mr-2" /> Forex</a></li>
-          <li><a href="#" class="flex items-center"><CircleDollarSignIcon class="w-5 h-5 mr-2" /> Metals</a></li>
-          <li><a href="#" class="flex items-center"><BarChartIcon class="w-5 h-5 mr-2" /> Stocks</a></li>
-        </ul>
-      </nav>
-      <div class="mb-8">
-        <img src="https://placehold.co/600x400" alt="Sphere" class="w-24 h-24 mx-auto" />
-      </div>
-      <button class="bg-purple-600 text-white py-2 px-4 rounded-full mb-8 hover:bg-purple-700 transition-colors">
-        Get Pro Now
-      </button>
-      <div class="flex items-center">
-        <img src="https://placehold.co/600x400" alt="User Avatar" class="w-10 h-10 rounded-full mr-3" />
-        <div>
-          <h3 class="font-medium">Tam Tran</h3>
-          <p class="text-sm text-gray-400">Free account</p>
-        </div>
-      </div>
-    </aside>
 
     <!-- Main Content -->
     <main class="flex-grow p-8 overflow-auto">
@@ -97,6 +69,9 @@
 
 <script setup>
 import { ref, computed } from 'vue'
+
+import Sidebar from '../components/Sidebar.vue'
+
 import { InfinityIcon, RefreshCcwIcon, PackageIcon, TrendingUpIcon, CircleDollarSignIcon, BarChartIcon } from 'lucide-vue-next'
 
 const predictions = ref([
@@ -116,6 +91,14 @@ const filteredPredictions = computed(() => {
   }
   return predictions.value.filter(p => p.symbol === selectedSymbol.value)
 })
+
+// export default defineComponent({
+//   name: "Dashboard",
+//   components: {
+//     Sidebar,
+//   },
+// });
+
 </script>
 
 <style>
