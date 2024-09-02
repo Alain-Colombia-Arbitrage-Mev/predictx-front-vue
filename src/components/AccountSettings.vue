@@ -12,7 +12,7 @@
           alt=""
           src="/solidicon.svg"
         />
-        <div class="relative leading-[24px]">Account Settings</div>
+        <div class="relative leading-[24px] cursor-pointer" @click="$emit('account-settings-click')">Account Settings</div>
       </div>
     </div>
   </section>
@@ -22,5 +22,6 @@
 
   export default defineComponent({
     name: "AccountSettings",
+    emits: ['account-settings-click']
   });
 </script>

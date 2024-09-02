@@ -1,9 +1,8 @@
 <template>
   <v-btn
-    class="whitespace-nowrap hover:bg-royalblue"
-    color="primary"
+    class="whitespace-nowrap bg-blue-900 text-white hover:bg-royalblue"
     variant="plain"
-    >Button</v-btn
+    >Go Pro Now!</v-btn
   >
 </template>
 <script>

@@ -1,6 +1,6 @@
 <template>
   <div
-    class="w-[319px] flex flex-col items-start justify-start leading-[normal] tracking-[normal]"
+    class="h-screen w-[319px] flex flex-col items-start justify-start leading-[normal] tracking-[normal]"
   >
     <Secciones @section-click="handleSectionClick" />
     <section
@@ -18,7 +18,7 @@
         <Button1 />
       </div>
     </section>
-    <AccountSettings />
+    <AccountSettings @account-settings-click="handleAccountSettingsClick" />
     <router-view />
   </div>
 </template>
@@ -36,6 +36,10 @@ export default defineComponent({
   methods: {
     handleSectionClick(section) {
       this.$emit('section-change', section);
+    },
+    handleAccountSettingsClick() {
+      // Aquí puedes agregar la lógica que se ejecutará cuando se haga clic en "Account Settings"
+      console.log("Se hizo clic en Account Settings");
     }
   }
 });
