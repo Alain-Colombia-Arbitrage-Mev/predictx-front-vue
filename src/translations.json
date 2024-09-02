@@ -1,0 +1,20 @@
+{
+    "es": {
+      "hello": "Hola",
+      "welcome": "Bienvenido",
+      "predictions": "Predicciones",
+      "crypto": "Criptomonedas",
+      "metals": "Metales",
+      "forex": "Forex",
+      "stocks": "Acciones"
+    },
+    "en": {
+      "hello": "Hello",
+      "welcome": "Welcome",
+      "predictions": "Predictions",
+      "crypto": "Cryptocurrencies",
+      "metals": "Metals",
+      "forex": "Forex",
+      "stocks": "Stocks"
+    }
+  }
