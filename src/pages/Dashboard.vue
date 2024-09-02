@@ -5,26 +5,27 @@
     <!-- Main Content -->
     <main class="flex-grow p-8 overflow-auto">
       <header class="mb-8">
-        <h2 class="text-2xl font-bold">Hi {{ username }}</h2>
-        <p class="text-lg">Welcome back 🎉</p>
+        <h2 class="text-2xl font-bold">{{$t("hello")}}, {{ username }}</h2>
+        <p class="text-lg">{{ $t('welcomeback') }} 🎉</p>
       </header>
 
       <!-- Banner -->
       <div class="h-48 relative overflow-hidden">
         <img src="/src/images/banner1.gif" class="absolute object-cover w-full h-full" />
         <div class="absolute top-0 left-0 w-full h-full bg-black opacity-50"></div>
-        <h2 class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white text-2xl font-bold z-10">Predicciones Recientes</h2>
+        <h2 class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white text-2xl font-bold z-10">{{$t("predictions")}}</h2>
       </div>
 
-      <!-- Predictions Table with Filter -->
-      <section class="mt-8">
-        <h2 class="text-xl font-bold mb-4">{{ currentSection }} Predictions</h2>
-        
+     <!-- Predictions Table with Filter -->
+<section class="mt-8">
+  <h2 class="text-xl font-bold mb-4">{{ $t('sections.crypto') }} {{ $t('predictionsdashboard') }}</h2>
+
+
         <!-- Symbol Filter -->
         <div class="mb-4">
-          <label for="symbolFilter" class="block text-sm font-medium text-gray-400 mb-2">Filter by Symbol:</label>
+          <label for="symbolFilter" class="block text-sm font-medium text-gray-400 mb-2"> {{ $t("Filter by Symbol") }}</label>
           <select id="symbolFilter" v-model="selectedSymbol" class="bg-gray-700 text-white rounded-md px-3 py-2 w-full max-w-xs">
-            <option value="">All Symbols</option>
+            <option value="">{{ $t("All Symbols") }}</option>
             <option v-for="symbol in uniqueSymbols" :key="symbol" :value="symbol">{{ symbol }}</option>
           </select>
         </div>
@@ -33,14 +34,14 @@
           <table class="w-full">
             <thead>
               <tr class="bg-gray-800">
-                <th class="p-3 text-left">Date</th>
-                <th class="p-3 text-left">TimeFrame</th>
-                <th class="p-3 text-left">Symbol</th>
-                <th class="p-3 text-left">Trend</th>
-                <th class="p-3 text-left">Entry price</th>
-                <th class="p-3 text-left">Prediction</th>
-                <th class="p-3 text-left">SL</th>
-                <th class="p-3 text-left">TP</th>
+                <th class="p-3 text-left">{{$t("Date")}}</th>
+                <th class="p-3 text-left">{{$t("TimeFrame")}}</th>
+                <th class="p-3 text-left">{{$t("Symbol")}}</th>
+                <th class="p-3 text-left">{{$t("Trend")}}</th>
+                <th class="p-3 text-left">{{$t("Entry price")}}</th>
+                <th class="p-3 text-left">{{$t("Prediction")}}</th>
+                <th class="p-3 text-left">{{$t("SL")}}</th>
+                <th class="p-3 text-left">{{$t("TP")}}</th>
               </tr>
             </thead>
             <tbody>
@@ -99,6 +100,21 @@ const filteredPredictions = computed(() => {
     return sectionPredictions
   }
   return sectionPredictions.filter(p => p.symbol === selectedSymbol.value)
+})
+
+const getSectionText = computed(() => {
+  switch (currentSection.value) {
+    case 'Crypto':
+      return `${$t('sections.crypto')} ${$t('predictionsdashboard')}`
+    case 'Metals':
+      return `${$t('sections.metals')} ${$t('predictionsdashboard')}`
+    case 'Forex':
+      return `${$t('sections.forex')} ${$t('predictionsdashboard')}`
+    case 'Stocks':
+      return `${$t('sections.stocks')} ${$t('predictionsdashboard')}`
+    default:
+      return ''
+  }
 })
 
 const handleSectionChange = (section) => {
