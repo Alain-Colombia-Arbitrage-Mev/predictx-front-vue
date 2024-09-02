@@ -12,7 +12,7 @@
           <select @change="handleChangeLanguage" class="bg-gray-700 text-white rounded-md px-3 py-2 w-full">
             <option value="es">{{ $t('Español') }}</option>
             <option value="en">{{ $t('Ingles') }}</option>
-          </select>
+          </select> 
 
           
         </div>
