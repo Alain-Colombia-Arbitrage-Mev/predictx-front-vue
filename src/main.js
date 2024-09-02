@@ -37,9 +37,10 @@ const routes = [
     component: Dashboard,
     children: [
       {
-        path: "signals",
+        path: "signals/:symbol", 
         name: "signals",
-        component: Signals
+        component: Signals,
+        props: true
       }
     ]
   },

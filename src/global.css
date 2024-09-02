@@ -12,3 +12,16 @@ body {
 ::after {
   border-width: 0;
 }
+
+
+/* global.css o el archivo CSS global que estés utilizando */
+.router-link {
+  text-decoration: none; /* Elimina el subrayado */
+  color: white; /* Hereda el color del texto del contenedor */
+}
+
+/* Si deseas aplicar estilos específicos */
+.router-link-active {
+  font-weight: bold; /* Cambia el peso de la fuente cuando el enlace está activo */
+  color: white; /* Cambia el color del enlace activo */
+}

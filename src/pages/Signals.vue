@@ -5,20 +5,23 @@
       <img src="/src/images/banner1.gif" class="absolute object-cover w-full h-full" />
       <div class="absolute top-0 left-0 w-full h-full bg-black opacity-50"></div>
       <h2 class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white text-2xl font-bold z-10">
-        Predicciones Recientes
+        Predicciones Recientes  {{ symbol }}
       </h2>
     </div>
 
     <!-- Signal List Component -->
-    <SignalList :predictions="predictions[currentSection]" :section="currentSection" />
+    <SignalList :predictions="predictions[currentSection]" :section="symbol" />
   </div>
 </template>
 
 <script setup>
 import { ref, computed } from 'vue'
-import SignalList from '../components/SignalList.vue'  // Importa el nuevo componente
+import { useRoute } from 'vue-router'
+import SignalList from '../components/SignalList.vue'
 
-const username = ref('John Doe') // Replace with actual username logic
+const route = useRoute()
+const symbol = computed(() => route.params.symbol || '')
+
 const currentSection = ref('Crypto')
 const selectedSymbol = ref('')
 

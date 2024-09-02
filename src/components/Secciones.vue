@@ -34,8 +34,11 @@
             class="w-full flex flex-row items-center justify-start py-3 px-4 gap-3 cursor-pointer hover:bg-blue-900 rounded-lg transition-colors duration-200"
             :class="{ 'bg-blue-800': section.active }"
           >
+          <router-link :to="{ name: 'signals', params: { symbol: section.name } }" class="custom-link">
+
             <img class="h-6 w-6 relative" loading="lazy" :alt="section.name" :src="section.icon" />
             <span class="flex-1 text-left relative leading-[20px] font-semibold">{{ $t(section.translatedName) }}</span>
+          </router-link>
           </li>
         </ul>
       </nav>
@@ -49,10 +52,10 @@ export default {
   data() {
     return {
       sections: [
-        { name: 'Crypto', translatedName: 'sections.crypto', icon: '/icon.svg', active: false },
-        { name: 'Forex', translatedName: 'sections.forex', icon: '/iconlytwotonebag.svg', active: false },
-        { name: 'Metals', translatedName: 'sections.metals', icon: '/iconlytwotonediscovery.svg', active: false },
-        { name: 'Stocks', translatedName: 'sections.stocks', icon: '/iconlytwotonewallet.svg', active: false },
+        { name: 'crypto', translatedName: 'sections.crypto', icon: '/icon.svg', active: false },
+        { name: 'forex', translatedName: 'sections.forex', icon: '/iconlytwotonebag.svg', active: false },
+        { name: 'metals', translatedName: 'sections.metals', icon: '/iconlytwotonediscovery.svg', active: false },
+        { name: 'stocks', translatedName: 'sections.stocks', icon: '/iconlytwotonewallet.svg', active: false },
       ]
     }
   },
@@ -66,3 +69,14 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+.custom-link {
+  text-decoration: none; /* Elimina el subrayado */
+  color: white; /* Cambia el color del enlace */
+}
+
+.custom-link:hover {
+  color: skyblue; /* Cambia el color al pasar el ratón sobre el enlace */
+}
+</style>
