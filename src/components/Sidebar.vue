@@ -14,7 +14,13 @@
           loading="lazy"
           alt=""
           src="/rectangle1@2x.png"
-        /><Button1 />
+        />
+        <v-btn
+        class="whitespace-nowrap hover:bg-royalblue"
+        color="primary"
+        variant="plain"
+        >Upgrade</v-btn
+        >
       </div>
     </section>
     <AccountSettings />
@@ -23,11 +29,10 @@
 <script>
   import { defineComponent } from "vue";
   import Secciones from "./Secciones.vue";
-  import Button1 from "./Button1.vue";
   import AccountSettings from "./AccountSettings.vue";
 
   export default defineComponent({
     name: "Sidebar",
-    components: { Secciones, Button1, AccountSettings },
+    components: { Secciones, AccountSettings },
   });
 </script>
