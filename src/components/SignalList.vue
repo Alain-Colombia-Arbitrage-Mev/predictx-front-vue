@@ -28,11 +28,11 @@
         </thead>
         <tbody>
           <tr v-for="prediction in filteredPredictions" :key="prediction.id" class="border-b border-gray-700">
-            <td class="p-3">{{ prediction.date }}</td>
-            <td class="p-3">{{ prediction.timeFrame }}</td>
-            <td class="p-3">{{ prediction.symbol }}</td>
+            <td class="p-3">{{ prediction.created }}</td>
+            <td class="p-3">{{ prediction.timeframe }}</td>
+            <td class="p-3">{{ prediction.currency }}</td>
             <td class="p-3">{{ prediction.trend }}</td>
-            <td class="p-3">{{ prediction.entryPrice }}</td>
+            <td class="p-3">{{ prediction.entry }}</td>
             <td class="p-3">{{ prediction.prediction }}</td>
             <td class="p-3">{{ prediction.sl }}</td>
             <td class="p-3">{{ prediction.tp }}</td>
