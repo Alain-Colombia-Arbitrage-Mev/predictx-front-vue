@@ -20,8 +20,8 @@
             variant="outlined"
             type="text"
             name="username"
-            label="Username"
-            placeholder="Username"
+            label="email"
+            placeholder="email"
           />
           <v-text-field
             class="[border:none] bg-[transparent] self-stretch h-[60.5px] font-inter text-3xl text-gray"
@@ -108,22 +108,14 @@ export default defineComponent({
             token.degree = meInfo.rankDegree;
             token.isActive = meInfo.isActive;
             // token.account = 
-            if (!meInfo.subscription.status) {
-              Swal.fire(
-              "Suscripcion",
-              "Ups, el periodo de suscripcion terminó. Contacta a soporte",
-              "error"
-              );
-              localStorage.removeItem('login');
-            } else {
-              service.login(token);
-              Swal.fire(
-              "Bienvenido",
-              "Hoy es una nueva oportunidad para invertir",
-              "info"
-              );
-              t.$router.push({ name: "Dashboard" });
-            }
+       
+            service.login(token);
+              // Swal.fire(
+              // "Bienvenido",
+              // "Hoy es una nueva oportunidad para invertir",
+              // "info"
+              // );
+            t.$router.push({ name: "Dashboard" });
           })
           .catch(function(err, r) {
             Swal.fire("Login error", String(err), "error");
