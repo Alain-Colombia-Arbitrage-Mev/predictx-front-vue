@@ -10,18 +10,14 @@
       </header>
 
       <!-- Banner -->
-      <div class="bg-purple-600 rounded-lg p-6 mb-8 relative overflow-hidden h-48">
-        <div class="absolute inset-0 flex items-center justify-center">
-          <div class="w-40 h-40 bg-pink-400 rounded-full relative">
-            <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-32 h-32 bg-purple-500 rounded-full"></div>
-            <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-24 h-24 bg-pink-300 rounded-full"></div>
-            <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-16 h-16 bg-purple-400 rounded-full"></div>
-          </div>
-        </div>
+      <div class="h-48 relative overflow-hidden">
+        <img src="/src/images/banner1.gif" class="absolute object-cover w-full h-full" />
+        <div class="absolute top-0 left-0 w-full h-full bg-black opacity-50"></div>
+        <h2 class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white text-2xl font-bold z-10">Predicciones Recientes</h2>
       </div>
 
       <!-- Predictions Table with Filter -->
-      <section>
+      <section class="mt-8">
         <h2 class="text-xl font-bold mb-4">{{ currentSection }} Predictions</h2>
         
         <!-- Symbol Filter -->
