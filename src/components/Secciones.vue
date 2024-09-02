@@ -29,7 +29,8 @@
         class="w-[215px] flex flex-col items-start justify-center gap-[15px]"
       >
         <div
-          class="self-stretch flex flex-row items-center justify-start py-2.5 pl-0 pr-[78px] gap-px"
+          @click="$emit('section-click', 'Crypto')"
+          class="self-stretch flex flex-row items-center justify-start py-2.5 pl-0 pr-[78px] gap-px cursor-pointer"
         >
           <img class="h-6 w-6 relative" loading="lazy" alt="" src="/icon.svg" />
           <a
@@ -38,7 +39,8 @@
           >
         </div>
         <div
-          class="self-stretch flex flex-row items-center justify-start py-2.5 pl-0 pr-[78px] gap-px"
+          @click="$emit('section-click', 'Futures')"
+          class="self-stretch flex flex-row items-center justify-start py-2.5 pl-0 pr-[78px] gap-px cursor-pointer"
         >
           <img
             class="h-6 w-6 relative"
@@ -51,7 +53,8 @@
           </div>
         </div>
         <div
-          class="self-stretch flex flex-row items-center justify-start py-2.5 pl-0 pr-[78px] gap-px"
+          @click="$emit('section-click', 'Forex')"
+          class="self-stretch flex flex-row items-center justify-start py-2.5 pl-0 pr-[78px] gap-px cursor-pointer"
         >
           <img
             class="h-6 w-6 relative"
@@ -62,7 +65,8 @@
           <div class="flex-1 relative leading-[20px] font-semibold">Forex</div>
         </div>
         <div
-          class="self-stretch flex flex-row items-center justify-start py-2.5 pl-0 pr-[78px] gap-px"
+          @click="$emit('section-click', 'Metals')"
+          class="self-stretch flex flex-row items-center justify-start py-2.5 pl-0 pr-[78px] gap-px cursor-pointer"
         >
           <img
             class="h-6 w-6 relative"
@@ -73,7 +77,8 @@
           <div class="flex-1 relative leading-[20px] font-semibold">Metals</div>
         </div>
         <div
-          class="self-stretch flex flex-row items-center justify-start py-2.5 pl-0 pr-[78px] gap-px"
+          @click="$emit('section-click', 'Stocks')"
+          class="self-stretch flex flex-row items-center justify-start py-2.5 pl-0 pr-[78px] gap-px cursor-pointer"
         >
           <img
             class="h-6 w-6 relative"
@@ -87,10 +92,12 @@
     </div>
   </section>
 </template>
-<script>
-  import { defineComponent } from "vue";
 
-  export default defineComponent({
-    name: "Secciones",
-  });
+<script>
+import { defineComponent } from "vue";
+
+export default defineComponent({
+  name: "Secciones",
+  emits: ['section-click']
+});
 </script>

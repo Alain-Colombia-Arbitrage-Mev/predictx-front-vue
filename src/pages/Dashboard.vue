@@ -1,12 +1,11 @@
- <template>
+<template>
   <div class="flex h-screen bg-black text-white">
-    <Sidebar> </Sidebar>
-    <!-- Sidebar -->
-
+    <Sidebar @section-change="handleSectionChange" />
+    
     <!-- Main Content -->
     <main class="flex-grow p-8 overflow-auto">
       <header class="mb-8">
-        <h2 class="text-2xl font-bold">Hi { username }</h2>
+        <h2 class="text-2xl font-bold">Hi {{ username }}</h2>
         <p class="text-lg">Welcome back 🎉</p>
       </header>
 
@@ -23,7 +22,7 @@
 
       <!-- Predictions Table with Filter -->
       <section>
-        <h2 class="text-xl font-bold mb-4">Filter predictions</h2>
+        <h2 class="text-xl font-bold mb-4">{{ currentSection }} Predictions</h2>
         
         <!-- Symbol Filter -->
         <div class="mb-4">
@@ -69,36 +68,47 @@
 
 <script setup>
 import { ref, computed } from 'vue'
-
 import Sidebar from '../components/Sidebar.vue'
 
-import { InfinityIcon, RefreshCcwIcon, PackageIcon, TrendingUpIcon, CircleDollarSignIcon, BarChartIcon } from 'lucide-vue-next'
-
-const predictions = ref([
-  { id: 1, date: '1', timeFrame: '1D', symbol: 'BTC-USD', trend: 'Long !', entryPrice: '50.0000', prediction: '51.200', sl: '49.500', tp: '62.500' },
-  { id: 2, date: '1', timeFrame: '1D', symbol: 'ETH-USD', trend: 'Long !', entryPrice: '2.400', prediction: '2.410', sl: '2.350', tp: '2.610' },
-])
-
+const username = ref('John Doe') // Replace with actual username logic
+const currentSection = ref('Crypto')
 const selectedSymbol = ref('')
 
+const predictions = {
+  Crypto: [
+    { id: 1, date: '2023-09-01', timeFrame: '1D', symbol: 'BTC-USD', trend: 'Long', entryPrice: '50000', prediction: '51200', sl: '49500', tp: '52500' },
+    { id: 2, date: '2023-09-01', timeFrame: '1D', symbol: 'ETH-USD', trend: 'Long', entryPrice: '2400', prediction: '2410', sl: '2350', tp: '2610' },
+  ],
+  Metals: [
+    { id: 3, date: '2023-09-01', timeFrame: '1D', symbol: 'GOLD', trend: 'Short', entryPrice: '1900', prediction: '1880', sl: '1920', tp: '1850' },
+    { id: 4, date: '2023-09-01', timeFrame: '1D', symbol: 'SILVER', trend: 'Long', entryPrice: '24', prediction: '24.5', sl: '23.8', tp: '25' },
+  ],
+  Forex: [
+    { id: 5, date: '2023-09-01', timeFrame: '1D', symbol: 'EUR/USD', trend: 'Long', entryPrice: '1.0500', prediction: '1.0550', sl: '1.0480', tp: '1.0600' },
+    { id: 6, date: '2023-09-01', timeFrame: '1D', symbol: 'GBP/JPY', trend: 'Short', entryPrice: '150.00', prediction: '149.50', sl: '150.50', tp: '148.50' },
+  ],
+  Stocks: [
+    { id: 7, date: '2023-09-01', timeFrame: '1D', symbol: 'AAPL', trend: 'Long', entryPrice: '150', prediction: '155', sl: '148', tp: '160' },
+    { id: 8, date: '2023-09-01', timeFrame: '1D', symbol: 'GOOGL', trend: 'Short', entryPrice: '2800', prediction: '2750', sl: '2830', tp: '2700' },
+  ],
+}
+
 const uniqueSymbols = computed(() => {
-  return [...new Set(predictions.value.map(p => p.symbol))]
+  return [...new Set(predictions[currentSection.value].map(p => p.symbol))]
 })
 
 const filteredPredictions = computed(() => {
+  const sectionPredictions = predictions[currentSection.value]
   if (!selectedSymbol.value) {
-    return predictions.value
+    return sectionPredictions
   }
-  return predictions.value.filter(p => p.symbol === selectedSymbol.value)
+  return sectionPredictions.filter(p => p.symbol === selectedSymbol.value)
 })
 
-// export default defineComponent({
-//   name: "Dashboard",
-//   components: {
-//     Sidebar,
-//   },
-// });
-
+const handleSectionChange = (section) => {
+  currentSection.value = section
+  selectedSymbol.value = '' // Reset symbol filter when changing sections
+}
 </script>
 
 <style>
