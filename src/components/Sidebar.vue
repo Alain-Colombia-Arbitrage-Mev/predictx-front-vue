@@ -30,7 +30,6 @@
       </div>
     </section>
     <AccountSettings @account-settings-click="handleAccountSettingsClick" />
-    <router-view />
   </div>
 </template>
 

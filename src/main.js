@@ -11,10 +11,11 @@ import * as directives from "vuetify/directives";
 import Login from "./pages/Login.vue";
 import Signup from "./pages/Signup.vue";
 import Dashboard from "./pages/Dashboard.vue";
+import Signals from "./pages/Signals.vue";
+
 import IPhone1415ProMax from "./pages/IPhone1415ProMax.vue";
 import IPhone8Plus from "./pages/IPhone8Plus.vue";
 import IPhoneSE from "./pages/IPhoneSE.vue";
-import Ipad from "./pages/Ipad.vue";
 import "./global.css";
 
 import store from './store'
@@ -34,7 +35,15 @@ const routes = [
     path: "/dashboard",
     name: "Dashboard",
     component: Dashboard,
+    children: [
+      {
+        path: "signals",
+        name: "signals",
+        component: Signals
+      }
+    ]
   },
+ 
   {
     path: "/iphone-14-15-pro-max-1",
     name: "IPhone1415ProMax",
@@ -49,12 +58,7 @@ const routes = [
     path: "/iphone-se-1",
     name: "IPhoneSE",
     component: IPhoneSE,
-  },
-  // {
-  //   path: "/ipad",
-  //   name: "Ipad",
-  //   component: Ipad,
-  // },
+  }
 ];
 
 const router = createRouter({
@@ -63,8 +67,8 @@ const router = createRouter({
 });
 
 router.beforeEach((toRoute, _, next) => {
-  const metaTitle = toRoute?.meta?.title;
-  const metaDesc = toRoute?.meta?.description;
+  const metaTitle = toRoute.meta.title;
+  const metaDesc = toRoute.meta.description;
 
   window.document.title = metaTitle || "Predictx2";
   if (metaDesc) {
