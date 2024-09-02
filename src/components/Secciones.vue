@@ -1,10 +1,10 @@
 <template>
   <section
-    class="self-stretch border-light-border border-t-[1px] border-solid overflow-hidden flex flex-col items-start justify-start pt-[27px] px-[25px] pb-[29px] text-left text-base text-fuschia-60 font-caption-caption-1-13 h-full"
+    class="self-stretch border-light-border border-t-[1px] border-solid overflow-hidden flex flex-col items-start justify-start pt-6 px-6 pb-6 text-left text-base text-fuschia-60 font-caption-caption-1-13 h-full"
   >
     <div class="self-stretch flex flex-col items-start justify-start h-full">
       <div
-        class="self-stretch flex flex-row items-start justify-start py-0 px-3 gap-5"
+        class="self-stretch flex flex-row items-center justify-start py-4 px-3 gap-5 mb-6"
       >
         <img
           class="h-[60px] w-[60px] relative rounded-[50%] object-cover min-h-[60px]"
@@ -12,79 +12,57 @@
           alt=""
           src="/ellipse-6@2x.png"
         />
-        <div class="flex-1 flex flex-col items-start justify-start">
-          <a
-            class="[text-decoration:none] self-stretch relative leading-[24px] text-[inherit]"
-            >Hey there!</a
+        <div class="flex-1 flex flex-col items-start justify-center">
+          <p
+            class="m-0 self-stretch relative leading-[24px] text-fuschia-60"
+            >{{ $t('hello') }}</p
           >
-          <a
-            class="[text-decoration:none] self-stretch relative text-11xl font-bold text-dark-gray"
-            >John Doe</a
+          <h2
+            class="m-0 self-stretch relative text-2xl font-bold text-dark-gray"
+            >John Doe</h2
           >
         </div>
       </div>
-      <div
+      <nav
         class="self-stretch flex flex-col items-start justify-start text-center text-xl text-primary-contrast flex-1"
       >
-        <div
-          class="w-[215px] flex flex-col items-start justify-center gap-[15px] flex-1"
-        >
-          <div
-            @click="$emit('section-click', 'Crypto')"
-            class="self-stretch flex flex-row items-center justify-start py-2.5 pl-0 pr-[78px] gap-px cursor-pointer hover:bg-blue-900"
+        <ul class="w-full list-none p-0 m-0 space-y-4">
+          <li
+            v-for="section in sections"
+            :key="section.name"
+            @click="$emit('section-click', section.name)"
+            class="w-full flex flex-row items-center justify-start py-3 px-4 gap-3 cursor-pointer hover:bg-blue-900 rounded-lg transition-colors duration-200"
+            :class="{ 'bg-blue-800': section.active }"
           >
-            <img class="h-6 w-6 relative" loading="lazy" alt="" src="/icon.svg" />
-            <a
-              class="[text-decoration:none] flex-1 relative leading-[20px] font-semibold text-[inherit]"
-              >Crypto</a
-            >
-          </div>
-          <div
-            @click="$emit('section-click', 'Forex')"
-            class="self-stretch flex flex-row items-center justify-start py-2.5 pl-0 pr-[78px] gap-px cursor-pointer hover:bg-blue-900"
-          >
-            <img
-              class="h-6 w-6 relative"
-              loading="lazy"
-              alt=""
-              src="/iconlytwotonebag.svg"
-            />
-            <div class="flex-1 relative leading-[20px] font-semibold">Forex</div>
-          </div>
-          <div
-            @click="$emit('section-click', 'Metals')"
-            class="self-stretch flex flex-row items-center justify-start py-2.5 pl-0 pr-[78px] gap-px cursor-pointer hover:bg-blue-900"
-          >
-            <img
-              class="h-6 w-6 relative"
-              loading="lazy"
-              alt=""
-              src="/iconlytwotonediscovery.svg"
-            />
-            <div class="flex-1 relative leading-[20px] font-semibold">Metals</div>
-          </div>
-          <div
-            @click="$emit('section-click', 'Stocks')"
-            class="self-stretch flex flex-row items-center justify-start py-2.5 pl-0 pr-[78px] gap-px cursor-pointer hover:bg-blue-900"
-          >
-            <img
-              class="h-6 w-6 relative"
-              loading="lazy"
-              alt=""
-              src="/iconlytwotonewallet.svg"
-            />
-            <div class="flex-1 relative leading-[20px] font-semibold">Stocks</div>
-          </div>
-
-          <div class="self-stretch flex flex-row items-center justify-start py-2.5 pl-0 pr-[78px] gap-px">
-            <select v-model="$i18n.locale" class="bg-gray-700 text-white rounded-md px-3 py-2 w-full max-w-xs">
-              <option value="es">Español</option>
-              <option value="en">Inglés</option>
-            </select>
-          </div>
-          
-        </div>
-      </div>
+            <img class="h-6 w-6 relative" loading="lazy" :alt="section.name" :src="section.icon" />
+            <span class="flex-1 text-left relative leading-[20px] font-semibold">{{ $t(section.translatedName) }}</span>
+          </li>
+        </ul>
+      </nav>
     </div>
   </section>
 </template>
+
+<script>
+export default {
+  name: 'Secciones',
+  data() {
+    return {
+      sections: [
+        { name: 'Crypto', translatedName: 'sections.crypto', icon: '/icon.svg', active: false },
+        { name: 'Forex', translatedName: 'sections.forex', icon: '/iconlytwotonebag.svg', active: false },
+        { name: 'Metals', translatedName: 'sections.metals', icon: '/iconlytwotonediscovery.svg', active: false },
+        { name: 'Stocks', translatedName: 'sections.stocks', icon: '/iconlytwotonewallet.svg', active: false },
+      ]
+    }
+  },
+  emits: ['section-click'],
+  methods: {
+    setActiveSection(sectionName) {
+      this.sections.forEach(section => {
+        section.active = section.name === sectionName;
+      });
+    }
+  }
+}
+</script>

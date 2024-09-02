@@ -1,8 +1,8 @@
 <template>
   <v-btn
-    class="whitespace-nowrap bg-blue-900 text-white hover:bg-royalblue"
+    class="text-lg text-white font-bold  whitespace-nowrap bg-blue-900  transition-colors duration-200 rounded-md px-4 py-2"
     variant="plain"
-    >Go Pro Now!</v-btn
+    >{{ $t('gopronow') }}</v-btn
   >
 </template>
 <script>

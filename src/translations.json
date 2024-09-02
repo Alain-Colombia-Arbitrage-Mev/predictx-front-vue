@@ -1,20 +1,54 @@
 {
-    "es": {
-      "hello": "Hola",
-      "welcome": "Bienvenido",
-      "predictions": "Predicciones",
-      "crypto": "Criptomonedas",
+  "es": {
+    "hello": "Hola",
+    "welcome": "Bienvenido",
+    "welcomeback": "Bienvenido de nuevo",
+    "predictions": "Predicciones Recientes",
+    "predictionsdashboard": "Predicciones",
+    "sections": {
+      "crypto": "Crypto",
       "metals": "Metales",
       "forex": "Forex",
       "stocks": "Acciones"
     },
-    "en": {
-      "hello": "Hello",
-      "welcome": "Welcome",
-      "predictions": "Predictions",
-      "crypto": "Cryptocurrencies",
+    "gopronow":"ir a plan PRO",
+    "logout": "Cerrar sesión",
+    "Perfil":"Perfil",
+    "Filter by Symbol":"Filtrar por simbolo",
+    "All Symbols":"Todos los simbolos",
+    "Date":"Fecha",
+    "TimeFrame":"TimeFrame",
+    "Symbol":"Símbolo",
+    "Trend":"Tendencia",
+    "Entry price":"Precio de entrada",
+    "Prediction":"Predicción",
+    "SL":"Stop Loss",
+    "TP":"Take Profit"
+  },
+  "en": {
+    "hello": "Hello",
+    "welcome": "Welcome",
+    "welcomeback": "Welcome Back",
+    "predictions": "Recent Predictions",
+    "predictionsdashboard": "Predictions",
+    "sections": {
+      "crypto": "Crypto",
       "metals": "Metals",
       "forex": "Forex",
       "stocks": "Stocks"
-    }
+    },
+    "gopronow":"Get pro now",
+    "logout": "Log out",
+    "Perfil":"Profile",
+    "Filter by Symbol":"Filter by Symbol",
+    "All Symbols":"All Symbols",
+    "Date":"Date",
+    "TimeFrame":"TimeFrame",
+    "Symbol":"Symbol",
+    "Trend":"Trend",
+    "Entry price":"Entry price",
+    "Prediction":"Prediction",
+    "SL":"SL",
+    "TP":"TP"
   }
+}
