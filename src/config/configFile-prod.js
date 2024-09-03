@@ -1,19 +1,19 @@
 export default {
   type: "production",
-  client_id: "61e0da4233d0cb452e040636",
-  client_secret: "bKLnyn69wWgxPPE0kZ0tgUtVTvej1qt0CjaDsGQMue4=",
+  client_id: "66d581fd256692502700aaad",
+  client_secret: "MwpB7nicDFFRe4zQTw5WdeWUmfifqu2PfNp8OoEqFfM=",
   credentials: {
     admin: {
       access_token:
-        "6tPPnr1fzN/5LvD4g4FqVF9vQ9k2AQedeKrUiw2089iZpuRU93ejZWd0P0gJ1Avd6EgjD2eoHWijz5dvh7ZGuQ=="
+        "Mfeqr6ufjabYGFPGGBObdr1tug1qKEkNHR76iWjkcyLjN3nrTpbvTxognQArQTQr6fpPJY0kRAYTxN+JGWCL+Q=="
     }
   },
   api: {
     url: {
-      ioEndpoint: "sail.guard-dog.net",
+      ioEndpoint: "localhost",
       path: "api",
-      protocol: "https",
-      port: null,
+      protocol: "http",
+      port: 9000,
     }
   }
 };

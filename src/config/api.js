@@ -21,5 +21,5 @@ function ConfigApi (Env) {
 		point: api.point
 	}
 }
-	
-	export default  {API :  ConfigApi(EnvironmentConfig)}
+
+export default  {API :  ConfigApi(EnvironmentConfig)}
