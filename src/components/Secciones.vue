@@ -19,8 +19,7 @@
           >
           <h2
             class="m-0 self-stretch relative text-2xl font-bold text-dark-gray"
-            >John Doe</h2
-          >
+            >{{user.username}}</h2>
         </div>
       </div>
       <nav
@@ -47,10 +46,19 @@
 </template>
 
 <script>
+import AuthService from '../services/AuthService';
+const authService = new AuthService() 
+// this.user = authService.userLogged()
+
+// console.log(this.user);
+
+
+
 export default {
   name: 'Secciones',
   data() {
     return {
+      user: {},
       sections: [
         { name: 'crypto', translatedName: 'sections.crypto', icon: '/icon.svg', active: false },
         { name: 'forex', translatedName: 'sections.forex', icon: '/iconlytwotonebag.svg', active: false },
@@ -58,6 +66,16 @@ export default {
         { name: 'stocks', translatedName: 'sections.stocks', icon: '/iconlytwotonewallet.svg', active: false },
       ]
     }
+  },
+  mounted() {
+    this.user =  authService.userLogged()
+    // this.initBigChart(this.isActive);
+
+    if (this.enableRTL) {
+      this.i18n.locale = 'ar';
+      this.$rtl.enableRTL();
+    }
+    
   },
   emits: ['section-click'],
   methods: {
