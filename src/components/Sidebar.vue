@@ -46,6 +46,9 @@ import { defineComponent } from "vue";
 import Secciones from "./Secciones.vue";
 import Button1 from "./Button1.vue";
 import AccountMenu from "./AccountMenu.vue";
+import AuthService from "../services/AuthService";
+
+let service = new AuthService();
 
 export default defineComponent({
   name: "Sidebar",
@@ -59,9 +62,10 @@ export default defineComponent({
       console.log("Se hizo clic en Account Settings");
     },
     handleLogoutClick() {
-      console.log("Se hizo clic en Logout");
+      service.logout()
       localStorage.removeItem('token');
-      this.$router.push({ name: 'login' });
+
+      this.$router.push({ name: 'Login' });
     },
     handleChangeLanguage(event) {
       this.$i18n.locale = event.target.value;

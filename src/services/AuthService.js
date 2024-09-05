@@ -70,7 +70,7 @@ class AuthService {
 
 
   logout() {
-
+    
     localStorage.removeItem('login');
       // context.commit('login', payload)
     return true
