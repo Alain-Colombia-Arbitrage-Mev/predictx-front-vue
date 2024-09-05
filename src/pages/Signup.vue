@@ -117,14 +117,21 @@ export default defineComponent({
 
       service.signup(userData)
         .then(function (response) {
-          if (!response.data.status) {
+          console.log(response);
+          let data =  response.data 
+          if (!data.status) {
             Swal.fire(
               'Registro erróneo',
-              response.data.message,
+              data.message,
               'error'
             );
           } else {
-            t.$router.push({ name: 'login' });
+            Swal.fire(
+              'Registro exitoso',
+              data.message,
+              'success'
+            );
+            t.$router.push({ name: 'Login' });
           }
         });
     },

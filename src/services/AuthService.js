@@ -1,7 +1,8 @@
 import http from "./Http";
 import api from "../config/apinode";
 import store from "../store";
-import EnvironmentConfig from "../config/configFile";
+import EnvironmentConfig from "../config/configFile-prod";
+
 
 class AuthService {
   signup(data) {
