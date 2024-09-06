@@ -42,15 +42,15 @@
           variant="flat"
           type="submit"
         >
-          Sign up
+          Sign in
         </v-btn>
         <v-btn
           class="self-stretch whitespace-nowrap hover:bg-blueviolet-100"
           color="primary"
           variant="flat"
-          type="submit"
+          type="button"
         >
-          Sign in
+         <router-link to="/signup"> signup </router-link>
         </v-btn>
       </form>
     </section>

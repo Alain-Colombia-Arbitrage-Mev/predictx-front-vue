@@ -10,10 +10,10 @@ export default {
   },
   api: {
     url: {
-      ioEndpoint: "localhost",
+      ioEndpoint: "bot.fidubit.co",
       path: "api",
       protocol: "http",
-      port: 9000,
+      port: 3000,
     }
   }
 };
