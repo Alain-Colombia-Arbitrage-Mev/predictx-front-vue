@@ -34,25 +34,16 @@
             placeholder="Password"
           />
         </div>
-        <div class="self-stretch flex flex-row items-center justify-center py-2.5 px-5 text-left text-9xl-3 font-roboto">
-          <div class="relative leading-[54px] whitespace-pre-wrap mq450:text-4xl mq450:leading-[43px]">
-            Or sign in with:
-          </div>
-        </div>
-        <div class="self-stretch rounded-mini bg-primary-contrast flex flex-row items-center justify-between py-0 px-[42px] gap-5 mq450:flex-wrap mq450:justify-center">
-          <div class="flex flex-col items-center justify-between py-[11.5px] px-0 box-border min-h-[50px]">
-            <div class="overflow-hidden flex flex-row items-center justify-start">
-              <img class="h-[27px] w-7 relative" loading="lazy" alt="" src="/socialicongm.svg" />
-            </div>
-          </div>
-          <div class="flex flex-col items-center justify-between pt-0 px-0 pb-0 box-border min-h-[50px]">
-            <img class="w-[50.3px] h-[50.3px] relative overflow-hidden shrink-0" loading="lazy" alt="" src="/facebook.svg" />
-          </div>
-          <div class="flex flex-col items-center justify-between py-3 px-0 box-border min-h-[52px]">
-            <img class="w-7 h-7 relative overflow-hidden shrink-0" loading="lazy" alt="" src="/facebook-1.svg" />
-          </div>
-        </div>
-        <router-link to="/signup">Signup</router-link>
+
+        <router-link to="/signup">Forget password?</router-link>
+        <v-btn
+          class="self-stretch whitespace-nowrap hover:bg-blueviolet-100"
+          color="primary"
+          variant="flat"
+          type="submit"
+        >
+          Sign up
+        </v-btn>
         <v-btn
           class="self-stretch whitespace-nowrap hover:bg-blueviolet-100"
           color="primary"
