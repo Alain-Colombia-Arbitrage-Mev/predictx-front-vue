@@ -48,11 +48,6 @@
 <script>
 import AuthService from '../services/AuthService';
 const authService = new AuthService() 
-// this.user = authService.userLogged()
-
-// console.log(this.user);
-
-
 
 export default {
   name: 'Secciones',

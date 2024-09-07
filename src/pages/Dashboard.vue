@@ -15,8 +15,10 @@
 <script setup>
 import { ref, computed } from 'vue'
 import Sidebar from '../components/Sidebar.vue'
+import AuthService from '../services/AuthService';
+const authService = new AuthService() 
 
-const username = ref('John Doe') // Replace with actual username logic
+const username =  authService.userLogged().username // Replace with actual username logic
 const currentSection = ref('Crypto')
 const selectedSymbol = ref('')
 const handleSectionChange = (section) => {
