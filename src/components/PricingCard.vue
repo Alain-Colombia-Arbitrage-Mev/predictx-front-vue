@@ -1,8 +1,8 @@
 <template>
   <div
-    class="flex flex-col justify-between p-8 rounded-lg shadow-lg border transition-transform transform hover:scale-105"
+    class="pricing-card flex flex-col justify-between p-8 rounded-lg shadow-lg border transition-transform transform hover:scale-105"
     :class="[
-      isPopular ? 'bg-purple-100 border-purple-600' : 'bg-white border-gray-200',
+      isPopular ? 'bg-blue-100 border-purple-600' : 'bg-white border-gray-200',
       'text-left'
     ]"
   >
@@ -32,6 +32,12 @@ defineProps({
 </script>
 
 <style scoped>
+.pricing-card {
+  color: black;
+  width: 30%; /* Ancho de la tarjeta al 30% del contenedor */
+  max-width: 300px; /* Un ancho máximo opcional para asegurar que no sea demasiado grande */
+  margin: 0 auto; /* Centrado de cada tarjeta si es necesario */
+}
 .shadow-lg {
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 }

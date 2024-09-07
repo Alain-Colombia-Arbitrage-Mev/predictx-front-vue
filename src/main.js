@@ -12,6 +12,7 @@ import Login from "./pages/Login.vue";
 import Signup from "./pages/Signup.vue";
 import Dashboard from "./pages/Dashboard.vue";
 import Signals from "./pages/Signals.vue";
+import Plans from "./pages/Plans.vue";
 
 import IPhone1415ProMax from "./pages/IPhone1415ProMax.vue";
 import IPhone8Plus from "./pages/IPhone8Plus.vue";
@@ -41,7 +42,15 @@ const routes = [
         name: "signals",
         component: Signals,
         props: true
+      },
+
+      {
+        path: "/plans", 
+        name: "upgrade",
+        component: Plans,
+        props: true
       }
+
     ]
   },
  

@@ -7,12 +7,13 @@
     </p>
 
     <!-- Pricing Cards Section -->
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+    <div class="flex flex-wrap justify-center gap-8"> <!-- Usar flex para una mejor alineación -->
       <PricingCard
         v-for="plan in plans"
         :key="plan.name"
         :plan="plan"
         :isPopular="plan.name === 'Popular'"
+        class="w-[30%]"
       />
     </div>
   </div>
@@ -24,7 +25,7 @@ import PricingCard from '../components/PricingCard.vue'
 
 const plans = ref([
   {
-    name: 'Intro',
+    name: 'Basic',
     price: '$10/month',
     description: 'Perfect for individuals just starting out.',
     features: [
@@ -32,29 +33,9 @@ const plans = ref([
       'Basic Support',
       'Single User Access',
       'Community Support',
-      'Basic Analytics',
-      'Basic Integrations',
-      'Free Updates',
       'Email Alerts',
       'Limited Customization',
       'Basic Security',
-    ],
-  },
-  {
-    name: 'Base',
-    price: '$30/month',
-    description: 'Ideal for small teams or startups.',
-    features: [
-      '25 GB Storage',
-      'Priority Support',
-      'Multiple User Access',
-      'Weekly Reports',
-      'Advanced Analytics',
-      'API Integrations',
-      'Enhanced Security',
-      'Customizable Interface',
-      'Unlimited Updates',
-      'Slack Alerts',
     ],
   },
   {
@@ -65,10 +46,6 @@ const plans = ref([
       '100 GB Storage',
       '24/7 Support',
       'Unlimited User Access',
-      'Daily Reports',
-      'Premium Analytics',
-      'Advanced Integrations',
-      'Full Customization',
       'Dedicated Account Manager',
       'Data Backup & Recovery',
       'Multi-Channel Alerts',
@@ -82,8 +59,6 @@ const plans = ref([
       '1 TB Storage',
       'Dedicated Support',
       'Unlimited Access',
-      'Real-Time Reports',
-      'Advanced Data Science',
       'Custom Integrations',
       'Premium Security',
       'Custom SLA',
@@ -96,6 +71,6 @@ const plans = ref([
 
 <style scoped>
 .container {
-  max-width: 1200px;
+  max-width: 1200px; /* Ancho máximo del contenedor */
 }
 </style>
