@@ -16,8 +16,8 @@
 <script setup>
 import { ref, onMounted, computed } from 'vue'
 import { useRoute } from 'vue-router'
-import axios from 'axios'
 import SignalList from '../components/SignalList.vue'
+import SignalService from '../services/SignalService' // Importa el servicio
 
 const route = useRoute()
 const symbol = computed(() => route.params.symbol || '')
@@ -25,19 +25,15 @@ const symbol = computed(() => route.params.symbol || '')
 const currentSection = ref('Crypto')
 const signals = ref([])
 
-// Función para obtener las señales desde la API
+// Instancia del servicio de señales
+const signalService = new SignalService()
+
+// Función para obtener las señales desde la API utilizando SignalService
 const fetchSignals = async () => {
   try {
-    const response = await axios.get('http://localhost:9000/api/signals', {
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer jxqNiJ99h/vWuBOAHGxz03skYoJqTg56DWooh6vomUatJEtmTThC2ufQMvwmABvovqmFuYvXxeOxUAbknWGMfQ==` // Cambia 'YOUR_BEARER_TOKEN_HERE' por el token adecuado
-      }
-    })
-
-    
+    const response = await signalService.list() // Usar el servicio para listar señales
     signals.value = response.data.data
-    console.log("signals", response.data.data);
+    console.log("signals", response.data.data)
   } catch (error) {
     console.error('Error fetching signals:', error)
   }
