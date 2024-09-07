@@ -1,7 +1,7 @@
 <template>
-  <div class="container mx-auto py-16 px-4 text-center">
+  <div class="container mx-auto py-10 px-4 text-center">
     <!-- Header Section -->
-    <h1 class="text-4xl font-bold mb-4">Get an attractive price here</h1>
+    <h1 class="text-4xl font-bold mb-2">Get an attractive price here</h1>
     <p class="text-lg text-gray-600 mb-12">
       Choose the perfect plan that fits your needs. Whether you're just starting out or ready to scale, we have a plan for you.
     </p>
@@ -29,13 +29,10 @@ const plans = ref([
     price: '$10/month',
     description: 'Perfect for individuals just starting out.',
     features: [
-      '5 GB Storage',
-      'Basic Support',
-      'Single User Access',
+      'Forex Market',
+      'Crypto Market',
+      'Basic Analytics',
       'Community Support',
-      'Email Alerts',
-      'Limited Customization',
-      'Basic Security',
     ],
   },
   {
@@ -43,12 +40,12 @@ const plans = ref([
     price: '$50/month',
     description: 'Best for growing teams that need more control.',
     features: [
-      '100 GB Storage',
-      '24/7 Support',
-      'Unlimited User Access',
+      'Forex Market',
+      'Crypto Market',
+      'Stocks Market',
+      'Metals Market',
+      'Advanced Analytics',
       'Dedicated Account Manager',
-      'Data Backup & Recovery',
-      'Multi-Channel Alerts',
     ],
   },
   {
@@ -56,14 +53,13 @@ const plans = ref([
     price: '$100/month',
     description: 'Perfect for enterprises with advanced needs.',
     features: [
-      '1 TB Storage',
-      'Dedicated Support',
-      'Unlimited Access',
+      'Forex Market',
+      'Crypto Market',
+      'Stocks Market',
+      'Metals Market',
+      'Commodities Market',
       'Custom Integrations',
-      'Premium Security',
-      'Custom SLA',
-      'Dedicated Success Manager',
-      'Custom Reports & Dashboards',
+      'Premium Analytics and Reports',
     ],
   },
 ])
