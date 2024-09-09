@@ -14,13 +14,13 @@
 </template>
 
 <script setup>
-import { ref, onMounted, computed } from 'vue'
+import { ref, onMounted, computed, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import SignalList from '../components/SignalList.vue'
 import SignalService from '../services/SignalService' // Importa el servicio
 
 const route = useRoute()
-const symbol = computed(() => route.params.symbol || '')
+const symbol = computed(() => route.params.symbol || '') // Obtenemos el símbolo desde la ruta
 
 const currentSection = ref('Crypto')
 const signals = ref([])
@@ -31,9 +31,8 @@ const signalService = new SignalService()
 // Función para obtener las señales desde la API utilizando SignalService
 const fetchSignals = async () => {
   try {
-    const response = await signalService.list() // Usar el servicio para listar señales
+    const response = await signalService.list(symbol.value) // Usa el valor calculado 'symbol'
     signals.value = response.data.data
-    console.log("signals", response.data.data)
   } catch (error) {
     console.error('Error fetching signals:', error)
   }
@@ -41,6 +40,11 @@ const fetchSignals = async () => {
 
 // Llamar a la función fetchSignals cuando el componente se monte
 onMounted(() => {
+  fetchSignals()
+})
+
+// Observa cambios en el parámetro de la ruta 'symbol' para refrescar la lista
+watch(symbol, () => {
   fetchSignals()
 })
 
