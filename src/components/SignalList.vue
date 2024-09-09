@@ -1,6 +1,5 @@
 <template>
   <section class="mt-8">
-    <h2 class="text-xl font-bold mb-4">{{ section }} Predictions</h2>
 
     <!-- Symbol Filter -->
     <div class="mb-4">
