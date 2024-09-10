@@ -7,10 +7,10 @@
     </p>
 
     <!-- Pricing Cards Section -->
-    <div class="flex flex-wrap justify-center gap-8"> <!-- Usar flex para una mejor alineación -->
+    <div class="flex flex-wrap justify-center gap-8">
       <PricingCard
         v-for="plan in plans"
-        :key="plan.name"
+        :key="plan._id"
         :plan="plan"
         :isPopular="plan.name === 'Popular'"
         class="w-[30%]"
@@ -20,53 +20,31 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
-import PricingCard from '../components/PricingCard.vue'
+import { ref, onMounted } from 'vue';
+import PricingCard from '../components/PricingCard.vue';
+import PlanService from '../services/PlanService';
+let service = new PlanService();
+const plans = ref([]);
 
-const plans = ref([
-  {
-    name: 'Basic',
-    price: '$10/month',
-    description: 'Perfect for individuals just starting out.',
-    features: [
-      'Forex Market',
-      'Crypto Market',
-      'Basic Analytics',
-      'Community Support',
-    ],
-  },
-  {
-    name: 'Popular',
-    price: '$50/month',
-    description: 'Best for growing teams that need more control.',
-    features: [
-      'Forex Market',
-      'Crypto Market',
-      'Stocks Market',
-      'Metals Market',
-      'Advanced Analytics',
-      'Dedicated Account Manager',
-    ],
-  },
-  {
-    name: 'Premium',
-    price: '$100/month',
-    description: 'Perfect for enterprises with advanced needs.',
-    features: [
-      'Forex Market',
-      'Crypto Market',
-      'Stocks Market',
-      'Metals Market',
-      'Commodities Market',
-      'Custom Integrations',
-      'Premium Analytics and Reports',
-    ],
-  },
-])
+const fetchPlans = async () => {
+  try {
+    const response = await service.list();
+
+    console.log(response);
+    
+    plans.value = response.data.data;
+  } catch (error) {
+    console.error('Error fetching plans:', error);
+  }
+};
+
+onMounted(() => {
+  fetchPlans();
+});
 </script>
 
 <style scoped>
 .container {
-  max-width: 1200px; /* Ancho máximo del contenedor */
+  max-width: 1200px;
 }
 </style>
