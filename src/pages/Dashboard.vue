@@ -1,5 +1,6 @@
 <template>
   <div class="flex h-screen bg-black text-white">
+    <Loader :isLoading="loading" />
     <Sidebar @section-change="handleSectionChange" />    
     <!-- Main Content -->
     <main class="flex-grow p-8 overflow-auto">
@@ -13,18 +14,21 @@
 </template>
 
 <script setup>
-import { ref, computed } from 'vue'
-import Sidebar from '../components/Sidebar.vue'
+import { ref, computed } from 'vue';
+import Sidebar from '../components/Sidebar.vue';
+import { useRouter } from 'vue-router';
 import AuthService from '../services/AuthService';
-const authService = new AuthService() 
+import Loader from '../components/Loader.vue';
+import loading from '../store/loadingState'; // Importar el estado global de loading
 
-const username =  authService.userLogged().username // Replace with actual username logic
-const currentSection = ref('Crypto')
-const selectedSymbol = ref('')
+const username = (new AuthService()).userLogged().username; // Replace with actual username logic
+const currentSection = ref('Crypto');
+const selectedSymbol = ref('');
+
 const handleSectionChange = (section) => {
-  currentSection.value = section
-  selectedSymbol.value = '' // Reset symbol filter when changing sections
-}
+  currentSection.value = section;
+  selectedSymbol.value = ''; // Reset symbol filter when changing sections
+};
 </script>
 
 <style>

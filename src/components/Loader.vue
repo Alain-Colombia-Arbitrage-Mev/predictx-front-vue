@@ -1,0 +1,49 @@
+<!-- src/components/Loader.vue -->
+<template>
+  <div class="loader" v-if="isLoading">
+    <div class="spinner"></div>
+    <b>Predict-X</b>
+  </div>
+</template>
+
+<script setup>
+import { defineProps } from 'vue';
+
+const props = defineProps({
+  isLoading: {
+    type: Boolean,
+    required: true,
+    default: false,
+  },
+});
+</script>
+
+<style scoped>
+.loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.spinner {
+  border: 4px solid rgba(0, 0, 0, 0.1);
+  border-left-color: #4f46e5;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+</style>
