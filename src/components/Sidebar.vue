@@ -74,7 +74,7 @@ export default defineComponent({
       this.$emit("section-change", section);
     },
     handleAccountSettingsClick() {
-      console.log("Se hizo clic en Account Settings");
+      this.$router.push({ name: "profile" });
     },
     handleLogoutClick() {
       service.logout();
