@@ -20,6 +20,9 @@ import IPhoneSE from "./pages/IPhoneSE.vue";
 import "./global.css";
 
 import store from './store';
+import AuthService from './services/AuthService'; // Importar el servicio de autenticación
+
+const authService = new AuthService(); // Instanciar el servicio
 
 const routes = [
   { path: "/", name: "Login", component: Login },
@@ -28,9 +31,10 @@ const routes = [
     path: "/dashboard",
     name: "Dashboard",
     component: Dashboard,
+    meta: { requiresAuth: true }, // Necesita autenticación
     children: [
-      { path: "signals/:symbol", name: "signals", component: Signals, props: true },
-      { path: "/plans", name: "upgrade", component: Plans, props: true }
+      { path: "signals/:symbol", name: "signals", component: Signals, props: true, meta: { requiresAuth: true } },
+      { path: "/plans", name: "upgrade", component: Plans, props: true, meta: { requiresAuth: true } }
     ]
   },
   { path: "/iphone-14-15-pro-max-1", name: "IPhone1415ProMax", component: IPhone1415ProMax },
@@ -43,16 +47,33 @@ const router = createRouter({
   routes,
 });
 
-router.beforeEach((toRoute, _, next) => {
+// Función para comprobar si el usuario está autenticado usando el AuthService
+function isAuthenticated() {
+  return authService.userLogged() !== null; // Comprueba si hay un usuario en localStorage
+}
+
+// Guardar de ruta global para verificar autenticación
+router.beforeEach((to, from, next) => {
   loading.value = true; // Mostrar el loader inmediatamente
-  const metaTitle = toRoute.meta.title;
-  const metaDesc = toRoute.meta.description;
+  
+  // Verificar si la ruta requiere autenticación
+  if (to.matched.some(record => record.meta.requiresAuth)) {
+    if (!isAuthenticated()) {
+      next({ name: 'Login' }); // Redirigir al login si no está autenticado
+    } else {
+      next(); // Permitir la navegación si está autenticado
+    }
+  } else {
+    next(); // Continuar si la ruta no requiere autenticación
+  }
+
+  const metaTitle = to.meta.title;
+  const metaDesc = to.meta.description;
 
   window.document.title = metaTitle || "Predictx2";
   if (metaDesc) {
     addMetaTag(metaDesc);
   }
-  next();
 });
 
 // Ocultar loader después de completar el cambio de ruta con retardo
