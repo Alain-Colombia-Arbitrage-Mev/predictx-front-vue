@@ -29,13 +29,13 @@
             <option value="en">English</option>
           </select>
         </div>
-        <div class="form-group">
+        <!-- <div class="form-group">
           <label for="theme">Tema</label>
           <select id="theme" v-model="user.theme">
             <option value="dark">Oscuro</option>
             <option value="light">Claro</option>
           </select>
-        </div>
+        </div> -->
         <button type="submit" class="update-btn">Actualizar perfil</button>
       </form>
     </div>
@@ -50,6 +50,9 @@
 </template>
 
 <script>
+import UserService from "../services/UserService"; // Asegúrate de tener el path correcto
+import Swal from "sweetalert2";
+
 export default {
   data() {
     return {
@@ -59,15 +62,32 @@ export default {
         avatarUrl: 'ruta/a/tu/avatar.jpg',
         memberSince: '01/01/2024',
         language: 'es',
-        theme: 'dark',
         subscription: 'Básico'
       }
     }
   },
   methods: {
-    updateProfile() {
-      // Lógica para actualizar el perfil
-      console.log('Perfil actualizado', this.user)
+    async updateProfile() {
+      try {
+        // Llamada a la API para actualizar los datos del usuario
+        let userService = new UserService();
+        const response = await userService.update({
+          name: this.user.name,
+          email: this.user.email,
+          language: this.user.language
+        });
+
+        if (response.status === 200) {
+          alert("¡Perfil actualizado correctamente!");
+          
+        } else {
+          Swal.fire("Perfil", String(err), "error");
+        }
+      } catch (error) {
+        console.error("Error actualizando el perfil:", error);
+        alert("Ocurrió un error durante la actualización.");
+        Swal.fire("Error", String(error), "error");
+      }
     },
     upgradeToPro() {
       // Lógica para actualizar a PRO

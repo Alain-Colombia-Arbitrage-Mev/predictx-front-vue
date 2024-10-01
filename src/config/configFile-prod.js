@@ -10,10 +10,10 @@ export default {
   },
   api: {
     url: {
-      ioEndpoint: "bot.fidubit.co",
+      ioEndpoint: "api.bigseer.vip",
       path: "api",
-      protocol: "http",
-      port: 3000,
+      protocol: "https",
+      // port: ,
     }
   }
 };
