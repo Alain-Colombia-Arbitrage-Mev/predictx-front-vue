@@ -10,7 +10,7 @@
     <form @submit.prevent="handleDeposit" class="w-full max-w-md mx-auto bg-white p-6 rounded-lg shadow-md">
       <div class="mb-6">
         <label for="amount" class="block text-left text-gray-700 font-medium mb-2">
-          Amount
+          Amount in USD
         </label>
         <input 
           type="number" 
