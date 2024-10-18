@@ -9,7 +9,8 @@
       "crypto": "Crypto",
       "metals": "Metales",
       "forex": "Forex",
-      "stocks": "Acciones"
+      "stocks": "Acciones",
+      "deposit": "Deposito"
     },
     "gopronow":"ir a plan PRO",
     "logout": "Cerrar sesión",
@@ -35,7 +36,8 @@
       "crypto": "Crypto",
       "metals": "Metals",
       "forex": "Forex",
-      "stocks": "Stocks"
+      "stocks": "Stocks",
+      "deposit": "Deposit"
     },
     "gopronow":"Get pro now",
     "logout": "Log out",

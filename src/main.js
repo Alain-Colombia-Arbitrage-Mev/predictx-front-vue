@@ -14,6 +14,7 @@ import Dashboard from "./pages/Dashboard.vue";
 import Signals from "./pages/Signals.vue";
 import Plans from "./pages/Plans.vue";
 import Profile from "./pages/Profile.vue";
+import Deposit from "./pages/Deposit.vue";
 
 import IPhone1415ProMax from "./pages/IPhone1415ProMax.vue";
 import IPhone8Plus from "./pages/IPhone8Plus.vue";
@@ -35,8 +36,9 @@ const routes = [
     meta: { requiresAuth: true }, // Necesita autenticación
     children: [
       { path: "signals/:symbol", name: "signals", component: Signals, props: true, meta: { requiresAuth: true } },
-      { path: "/plans", name: "upgrade", component: Plans, props: true, meta: { requiresAuth: true } },
-      { path: "/profile", name: "profile", component: Profile, props: true, meta: { requiresAuth: true } }
+      { path: "plans", name: "upgrade", component: Plans, props: true, meta: { requiresAuth: true } },
+      { path: "profile", name: "profile", component: Profile, props: true, meta: { requiresAuth: true } },
+      { path: "deposit", name: "deposit", component: Deposit, props: true, meta: { requiresAuth: true } }
     ]
   },
   { path: "/iphone-14-15-pro-max-1", name: "IPhone1415ProMax", component: IPhone1415ProMax },

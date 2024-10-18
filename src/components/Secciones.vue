@@ -33,13 +33,32 @@
             class="w-full flex flex-row items-center justify-start py-3 px-4 gap-3 cursor-pointer hover:bg-blue-900 rounded-lg transition-colors duration-200"
             :class="{ 'bg-blue-800': section.active }"
           >
+         <router-link 
+  :to="getLink(section)" 
+  class="custom-link"
+  :replace="section.link">
+  <img class="h-6 w-6 relative" loading="lazy" :alt="section.name" :src="section.icon" />
+  <span class="flex-1 text-left relative leading-[20px] font-semibold">
+    {{ $t(section.translatedName) }}
+  </span>
+</router-link>
+          </li>
+        </ul>
+
+
+        <!-- <ul class="w-full list-none p-0 m-0 space-y-4">
+          <li
+            @click="$emit('section-click', section.name)"
+            class="w-full flex flex-row items-center justify-start py-3 px-4 gap-3 cursor-pointer hover:bg-blue-900 rounded-lg transition-colors duration-200"
+            :class="{ 'bg-blue-800': section.active }"
+          >
           <router-link :to="{ name: 'signals', params: { symbol: section.name } }" class="custom-link">
 
             <img class="h-6 w-6 relative" loading="lazy" :alt="section.name" :src="section.icon" />
             <span class="flex-1 text-left relative leading-[20px] font-semibold">{{ $t(section.translatedName) }}</span>
           </router-link>
           </li>
-        </ul>
+        </ul> -->
       </nav>
     </div>
   </section>
@@ -55,6 +74,7 @@ export default {
     return {
       user: {},
       sections: [
+        { name: 'deposit', translatedName: 'sections.deposit', icon: '/iconlytwotonewallet.svg', active: false, link: "dashboard/deposit" },
         { name: 'crypto', translatedName: 'sections.crypto', icon: '/icon.svg', active: false },
         { name: 'forex', translatedName: 'sections.forex', icon: '/iconlytwotonebag.svg', active: false },
         { name: 'metals', translatedName: 'sections.metals', icon: '/iconlytwotonediscovery.svg', active: false },
@@ -78,7 +98,16 @@ export default {
       this.sections.forEach(section => {
         section.active = section.name === sectionName;
       });
+    },
+
+
+    getLink(section) {
+      // Si existe `link`, lo usamos, sino se va a la ruta 'signals' con el parámetro `symbol`.
+      return section.link 
+        ?  { name: 'deposit', params: { symbol: section.name } }
+        : { name: 'signals', params: { symbol: section.name } };
     }
+
   }
 }
 </script>
