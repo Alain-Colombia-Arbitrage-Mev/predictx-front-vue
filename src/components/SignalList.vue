@@ -60,7 +60,7 @@ const selectedSymbol = ref('')
 
 // Compute unique symbols for the filter dropdown
 const uniqueSymbols = computed(() => {
-  return [...new Set(props.predictions.map(p => p.symbol))]
+  return [...new Set(props.predictions.map(p => p.currency))]
 })
 
 // Filter predictions based on selected symbol
@@ -68,7 +68,7 @@ const filteredPredictions = computed(() => {
   if (!selectedSymbol.value) {
     return props.predictions
   }
-  return props.predictions.filter(p => p.symbol === selectedSymbol.value)
+  return props.predictions.filter(p => p.currency === selectedSymbol.value)
 })
 </script>
 
