@@ -10,7 +10,7 @@
     </div>
 
 
-    
+
     <!-- Predictions Table -->
     <div class="overflow-x-auto">
       <table class="w-full">
@@ -18,7 +18,7 @@
           <tr class="bg-gray-800">
             <th class="p-3 text-left">Date</th>
             <th class="p-3 text-left">TimeFrame</th>
-            <th class="p-3 text-left">Symbol</th>
+            <th class="p-3 text-left">{t{"Symbol"}</th>
             <th class="p-3 text-left">Trend</th>
             <th class="p-3 text-left">Entry Price</th>
             <th class="p-3 text-left">Prediction</th>
