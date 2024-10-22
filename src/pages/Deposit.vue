@@ -3,14 +3,14 @@
     <!-- Header Section -->
     <h1 class="text-4xl font-bold mb-2">Deposito</h1>
     <p class="text-lg text-gray-600 mb-12">
-      Deposit to your account with OnRamper!
+      Deposit to your account!
     </p>
 
     <!-- Deposit Form -->
     <form @submit.prevent="handleDeposit" class="w-full max-w-md mx-auto bg-white p-6 rounded-lg shadow-md">
       <div class="mb-6">
         <label for="amount" class="block text-left text-gray-700 font-medium mb-2">
-          Amount
+          Amount in USD
         </label>
         <input 
           type="number" 
@@ -27,7 +27,7 @@
       <button 
         type="submit" 
         class="w-full bg-gradient-to-r from-green-400 to-blue-500 text-white py-2 rounded-lg text-lg font-semibold hover:opacity-90 transition-opacity duration-300">
-        Deposit with OnRamper
+        Deposit with Onramp
       </button>
     </form>
   </div>
