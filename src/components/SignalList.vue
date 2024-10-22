@@ -1,6 +1,5 @@
 <template>
   <section class="mt-8">
-
     <!-- Symbol Filter -->
     <div class="mb-4">
       <label for="symbolFilter" class="block text-sm font-medium text-gray-400 mb-2">Filter by Symbol:</label>
@@ -41,7 +40,7 @@
     </div>
 
     <!-- Pagination -->
-    <div class="mt-4 flex justify-between items-center">
+    <div v-if="totalPages > 1" class="mt-4 flex justify-between items-center">
       <button @click="prevPage" :disabled="currentPage === 1" class="px-4 py-2 bg-gray-700 text-white rounded-md disabled:opacity-50">
         Previous
       </button>
@@ -54,7 +53,7 @@
 </template>
 
 <script setup>
-import { ref, computed } from 'vue'
+import { ref, computed, watch } from 'vue'
 
 const props = defineProps({
   predictions: {
@@ -68,6 +67,8 @@ const props = defineProps({
 })
 
 const selectedSymbol = ref('')
+const currentPage = ref(1)
+const itemsPerPage = 10
 
 // Compute unique symbols for the filter dropdown
 const uniqueSymbols = computed(() => {
@@ -82,17 +83,14 @@ const filteredPredictions = computed(() => {
   return props.predictions.filter(p => p.currency === selectedSymbol.value)
 })
 
-const currentPage = ref(1)
-const itemsPerPage = 10
+const totalPages = computed(() => {
+  return Math.ceil(filteredPredictions.value.length / itemsPerPage)
+})
 
 const paginatedPredictions = computed(() => {
   const startIndex = (currentPage.value - 1) * itemsPerPage
   const endIndex = startIndex + itemsPerPage
   return filteredPredictions.value.slice(startIndex, endIndex)
-})
-
-const totalPages = computed(() => {
-  return Math.ceil(filteredPredictions.value.length / itemsPerPage)
 })
 
 const prevPage = () => {
@@ -106,6 +104,11 @@ const nextPage = () => {
     currentPage.value++
   }
 }
+
+// Reset to first page when filter changes
+watch(selectedSymbol, () => {
+  currentPage.value = 1
+})
 </script>
 
 <style scoped>
