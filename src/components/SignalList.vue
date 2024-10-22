@@ -26,7 +26,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="prediction in filteredPredictions" :key="prediction.id" class="border-b border-gray-700">
+          <tr v-for="prediction in paginatedPredictions" :key="prediction.id" class="border-b border-gray-700">
             <td class="p-3">{{ prediction.created }}</td>
             <td class="p-3">{{ prediction.timeframe }}</td>
             <td class="p-3">{{ prediction.currency }}</td>
@@ -38,6 +38,17 @@
           </tr>
         </tbody>
       </table>
+    </div>
+
+    <!-- Pagination -->
+    <div class="mt-4 flex justify-between items-center">
+      <button @click="prevPage" :disabled="currentPage === 1" class="px-4 py-2 bg-gray-700 text-white rounded-md disabled:opacity-50">
+        Previous
+      </button>
+      <span class="text-gray-400">Page {{ currentPage }} of {{ totalPages }}</span>
+      <button @click="nextPage" :disabled="currentPage === totalPages" class="px-4 py-2 bg-gray-700 text-white rounded-md disabled:opacity-50">
+        Next
+      </button>
     </div>
   </section>
 </template>
@@ -70,6 +81,31 @@ const filteredPredictions = computed(() => {
   }
   return props.predictions.filter(p => p.currency === selectedSymbol.value)
 })
+
+const currentPage = ref(1)
+const itemsPerPage = 10
+
+const paginatedPredictions = computed(() => {
+  const startIndex = (currentPage.value - 1) * itemsPerPage
+  const endIndex = startIndex + itemsPerPage
+  return filteredPredictions.value.slice(startIndex, endIndex)
+})
+
+const totalPages = computed(() => {
+  return Math.ceil(filteredPredictions.value.length / itemsPerPage)
+})
+
+const prevPage = () => {
+  if (currentPage.value > 1) {
+    currentPage.value--
+  }
+}
+
+const nextPage = () => {
+  if (currentPage.value < totalPages.value) {
+    currentPage.value++
+  }
+}
 </script>
 
 <style scoped>
