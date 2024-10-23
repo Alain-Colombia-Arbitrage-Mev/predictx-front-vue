@@ -76,7 +76,7 @@ export default {
       sections: [
         { name: 'deposit', translatedName: 'sections.deposit', icon: '/iconlytwotonewallet.svg', active: false, link: "dashboard/deposit" },
         { name: 'crypto', translatedName: 'sections.crypto', icon: '/icon.svg', active: false },
-        { name: 'forex', translatedName: 'sections.forex', icon: '/iconlytwotonebag.svg', active: false },
+       // { name: 'forex', translatedName: 'sections.forex', icon: '/iconlytwotonebag.svg', active: false },
         { name: 'metals', translatedName: 'sections.metals', icon: '/iconlytwotonediscovery.svg', active: false },
         { name: 'stocks', translatedName: 'sections.stocks', icon: '/iconlytwotonewallet.svg', active: false },
       ]
