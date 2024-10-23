@@ -45,7 +45,7 @@ const handleDeposit = () => {
   }
 
   // Redirigir a OnRamper con el monto especificado
-  const onramperUrl = `https://widget.onramper.com?apiKey=YOUR_API_KEY&defaultAmount=${amount.value}&defaultFiat=USD`;
+  const onramperUrl = `https://widget.onramper.com?apiKey=pk_prod_01J8SF5F5EWYY7Z6W7AV1KW1Q5&defaultAmount=${amount.value}&defaultFiat=USD`;
   window.open(onramperUrl, '_blank');
 };
 </script>
