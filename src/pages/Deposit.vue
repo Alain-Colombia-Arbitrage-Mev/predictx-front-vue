@@ -1,9 +1,9 @@
 <template>
   <div class="container mx-auto py-10 px-4 text-center">
     <!-- Header Section -->
-    <h1 class="text-4xl font-bold mb-2">Deposito</h1>
+    <h1 class="text-4xl font-bold mb-2">Fast Buy / Sell </h1>
     <p class="text-lg text-gray-600 mb-12">
-      Deposit to your account!
+     Fast Buy / Sell Crypto
     </p>
 
     <!-- Deposit Form -->
@@ -27,7 +27,7 @@
       <button 
         type="submit" 
         class="w-full bg-gradient-to-r from-green-400 to-blue-500 text-white py-2 rounded-lg text-lg font-semibold hover:opacity-90 transition-opacity duration-300">
-        Deposit with Onramp
+        Buy now
       </button>
     </form>
   </div>
@@ -45,7 +45,7 @@ const handleDeposit = () => {
   }
 
   // Redirigir a OnRamper con el monto especificado
-  const onramperUrl = `https://widget.onramper.com?apiKey=pk_prod_01J8SF5F5EWYY7Z6W7AV1KW1Q5&defaultAmount=${amount.value}&defaultFiat=USD`;
+  const onramperUrl = `https://buy.onramper.com?apiKey=pk_prod_01J8SF5F5EWYY7Z6W7AV1KW1Q5&defaultAmount=${amount.value}&defaultFiat=USD`;
   window.open(onramperUrl, '_blank');
 };
 </script>
