@@ -44,6 +44,22 @@
         >
           Sign in
         </v-btn>
+
+
+        <hr>
+
+   <v-btn
+  class="self-stretch whitespace-nowrap hover:bg-blueviolet-100"
+  color="primary"
+  variant="flat"
+  type="button"
+  href="https://auth.bigseer.vip/login.php" 
+  target="_blank" 
+>
+  Sign in > PeopleGroup
+</v-btn>
+
+
         <v-btn
           class="self-stretch whitespace-nowrap hover:bg-blueviolet-100"
           color="primary"
