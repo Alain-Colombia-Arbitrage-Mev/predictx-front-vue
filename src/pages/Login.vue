@@ -89,6 +89,12 @@ export default defineComponent({
       password: ''
     };
   },
+   mounted() {
+    // Detecta si es un callback de OAuth
+    if (window.location.search.includes("token")) {
+      this.handleOAuthCallback();
+    }
+  },
  methods: {
     handleLogin: async function() {
       var t = this,
@@ -134,7 +140,88 @@ export default defineComponent({
           "error"
         );
       }
-    }
+    },
+
+
+    handleOAuthCallback: async function() {
+      var t = this
+      
+      var token = new URLSearchParams(window.location.search).get("token");
+
+      if (token) {
+        service
+          .verifyOAuthToken(token)
+          .then(async function(userToken) {
+            if (userToken.error === "invalid_grant") {
+              throw new Error("Credentials is not valid!");
+            } else if (userToken.data.hasOwnProperty("access_token")) {
+              token = userToken.data;
+              service.login(token);
+              return await service.me();
+            }
+          })
+          .then(function(me) {
+            var meInfo = me.data.data;
+            token.role = meInfo.roles;
+            token.username = meInfo.username;
+            token.name = meInfo.name;
+            token.id = meInfo._id;
+            token.degree = meInfo.rankDegree;
+            token.isActive = meInfo.isActive;
+       
+            service.login(token);
+            t.$router.push({ name: "Dashboard" });
+          })
+          .catch(function(err, r) {
+            Swal.fire("Login error", String(err), "error");
+          });
+      } else {
+        Swal.fire(
+          "Login error",
+          `Error, please enter your credentials`,
+          "error"
+        );
+      }
+    },
+
+
+    // async handleOAuthCallback() {
+    //   const token = new URLSearchParams(window.location.search).get("token");
+    //   var t = this
+
+    //   if (token) {
+    //     try {
+    //       const response = await service.verifyOAuthToken(token);
+
+    //       if (response.data && response.data.access_token) {
+    //         service.login(response.data.access_token);
+            
+
+    //         let me = await service.me();
+
+    //         var meInfo = me.data.data;
+    //         token.role = meInfo.roles;
+    //         token.username = meInfo.username;
+    //         token.name = meInfo.name;
+    //         token.id = meInfo._id;
+    //         token.degree = meInfo.rankDegree;
+    //         token.isActive = meInfo.isActive;
+    //         // token.account = 
+       
+    //         service.login(token);
+
+            
+    //         t.$router.push({ name: "Dashboard" });
+    //       } else {
+    //         throw new Error("OAuth token is invalid.");
+    //       }
+    //     } catch (error) {
+    //       Swal.fire("OAuth Login error", String(error), "error");
+    //     }
+    //   }
+    // },
+
+    
   }
 });
 </script>
