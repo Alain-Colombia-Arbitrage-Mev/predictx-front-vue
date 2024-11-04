@@ -37,7 +37,11 @@
       "metals": "Metals",
       "forex": "Forex",
       "stocks": "Stocks",
+<<<<<<< HEAD
       "deposit": "OnRamp"
+=======
+      "deposit": "Fast Buy/Sell"
+>>>>>>> dec44e692c12e56ac37684674520fc1bc7b22964
     },
     "gopronow":"Get pro now",
     "logout": "Log out",
