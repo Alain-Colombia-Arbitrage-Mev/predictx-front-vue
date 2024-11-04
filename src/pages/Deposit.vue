@@ -1,9 +1,9 @@
 <template>
   <div class="container mx-auto py-10 px-4 text-center">
     <!-- Header Section -->
-    <h1 class="text-4xl font-bold mb-2">Deposito</h1>
+    <h1 class="text-4xl font-bold mb-2">Fast Buy/Sell</h1>
     <p class="text-lg text-gray-600 mb-12">
-      Deposit to your account!
+      Onramp buy and sell crypto
     </p>
 
     <!-- Deposit Form -->
