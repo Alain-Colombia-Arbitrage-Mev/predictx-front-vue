@@ -2,6 +2,7 @@ import http from "./Http";
 import api from "../config/apinode";
 import store from "../store";
 import EnvironmentConfig from "../config/configFile-prod";
+// import { token } from "../../../api/controllers/auth2";
 
 
 class AuthService {
@@ -29,6 +30,23 @@ class AuthService {
       Authorization: this.userLogged().token_type + " " + this.userLogged().access_token
     };
     return http("get", null, "users/me", headers);
+  }
+
+
+  verifyOAuthToken (authCode) {
+
+    const params = new URLSearchParams();
+    params.append("grant_type", "authorization_code");
+    // params.append("client_id", EnvironmentConfig.client_id);
+    // params.append("client_secret", EnvironmentConfig.client_secret)
+    params.append("code", authCode);
+
+    var headers = {
+      "Content-Type": "application/x-www-form-urlencoded"
+    };
+
+    return http("post", params, "auth/callback", headers);
+
   }
 
   password(username, password) {
