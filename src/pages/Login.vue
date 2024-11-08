@@ -128,7 +128,8 @@ export default defineComponent({
               // "Hoy es una nueva oportunidad para invertir",
               // "info"
               // );
-            t.$router.push({ name: "Dashboard" });
+           t.$router.push({ name: "signals", params: { symbol: "crypto" } });
+
           })
           .catch(function(err, r) {
             Swal.fire("Login error", String(err), "error");
