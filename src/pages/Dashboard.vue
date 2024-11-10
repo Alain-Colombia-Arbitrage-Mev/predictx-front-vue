@@ -14,7 +14,7 @@
         </div>
         
         <!-- Columna Derecha: Información de Suscripción -->
-        <div v-if="subscription" class="flex flex-col items-end bg-gray-800 p-4 rounded-lg shadow-lg">
+        <div v-if="subscription" class="flex flex-col items-start bg-gray-800 p-4 rounded-lg shadow-lg">
           <h3 class="text-xl font-semibold mb-2">Suscripción</h3>
           <p><span class="font-bold">Plan:</span> {{ subscription.plan }}</p>
           <!-- <p><span class="font-bold">Tipo:</span> {{ subscription.type }}</p> -->
