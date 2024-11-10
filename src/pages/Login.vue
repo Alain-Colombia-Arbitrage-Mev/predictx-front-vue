@@ -120,7 +120,9 @@ export default defineComponent({
             token.id = meInfo._id;
             token.degree = meInfo.rankDegree;
             token.isActive = meInfo.isActive;
+            token.subscription = me.data.subscription;
             // token.account = 
+            console.log(meInfo);
        
             service.login(token);
               // Swal.fire(
