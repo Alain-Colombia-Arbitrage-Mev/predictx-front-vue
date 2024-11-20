@@ -1,4 +1,4 @@
-import EnvironmentConfig from './configFile-prod'
+import EnvironmentConfig from './configFile'
 
 function ConfigApiNode (Env) {
   var api = {
