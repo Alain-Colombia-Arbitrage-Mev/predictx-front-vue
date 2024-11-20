@@ -120,7 +120,9 @@ export default defineComponent({
             token.id = meInfo._id;
             token.degree = meInfo.rankDegree;
             token.isActive = meInfo.isActive;
+            token.subscription = me.data.subscription;
             // token.account = 
+            console.log(meInfo);
        
             service.login(token);
               // Swal.fire(
@@ -128,7 +130,8 @@ export default defineComponent({
               // "Hoy es una nueva oportunidad para invertir",
               // "info"
               // );
-            t.$router.push({ name: "Dashboard" });
+           t.$router.push({ name: "signals", params: { symbol: "crypto" } });
+
           })
           .catch(function(err, r) {
             Swal.fire("Login error", String(err), "error");
